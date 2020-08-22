@@ -1,4 +1,4 @@
-<section class="sct-color-1 slice">
+<section>
 
   <% if @book.errors.any? %>
   <div id="error_explanation">
@@ -11,23 +11,32 @@
   </div>
   <% end %>
 
-  <div class="container-fluid">
-    <div class="row content">
-      <div class="col-sm-3 sidenav hidden-xs">
-        <div class="form-sidenav text-left">
-          <h2 class="form-saidenav-title">User Info</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="form-group text-left">
+          <h2>User info</h2>
         </div>
-        <p>ここにプロフィール画像</p>
-        <hr>
-        <label class="control-label">name</label>
-        <p class="form-control-static"> <%= @user.name %></p>
-        <hr>
-        <label class="control-label">introduction</label>
-        <p class="form-control-static"> <%= @user.introduction %></p>
-        <%= link_to "#", edit_user_path, class: "btn btn-default btn-block", 'aria-hidden' => true %><span class="glyphicon glyphicon-wrench"></span>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+        <table class="table">
+          <tbody>
+            <tr colspan="1"></tr>
+            <tr>
+              <th>name</th>
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to edit_user_path(@user) do %>
+        <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+        <% end %>
 
-        <div class="form-sidenav text-left">
-          <h2 class="form-sidenav-title">New book</h2>
+        <div class="form-group text-left">
+          <h2>New book</h2>
         </div>
 
         <%= form_for(@book) do |f| %>
@@ -43,10 +52,10 @@
         <% end %>
       </div>
 
-      <!-- ここから変わる -->
-      <div class="col-sm-9">
-        <div class="form-body text-left">
-          <h2 class="form-body-title">Books</h2>
+      <!-- ここから -->
+      <div class="col-xs-9">
+        <div class="form-group text-left">
+          <h2>Books</h2>
         </div>
         <table class="table">
           <thead>
@@ -60,15 +69,16 @@
           <tbody>
             <% @books.each do |book| %>
             <tr>
-              <td>ここにプロフィール画像</td>
-              <td><%= @book.title %></td>
-              <td><%= @book.body %></td>
+              <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %></td>
+              <td><%= book.title %></td>
+              <td><%= book.body %></td>
             </tr>
             <% end %>
           </tbody>
         </table>
       </div>
       <!-- ここまで -->
+      
     </div>
   </div>
 </section>

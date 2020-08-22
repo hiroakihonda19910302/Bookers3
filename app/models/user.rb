@@ -8,8 +8,7 @@ class User < ApplicationRecord
 
   # バリデーション追記
   validates :name, presence: true, length: {minimum: 2, maximum: 20 }
-  validates :title, presence: true
-  validates :body, presence: true
-
-  attachment :image
+  validates :introduction, length: {maximum: 50 }
+  
+  attachment :profile_image
 end

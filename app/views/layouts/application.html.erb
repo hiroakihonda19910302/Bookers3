@@ -17,34 +17,52 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bookers</a>
+            <h3>Bookers</h3>
           </div>
 
           <div id="slidemenu">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                  <%= link_to user_path(current_user.id) do %>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+                  <% end %>
                 </li>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
+                  <%= link_to users_path do %>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
+                  <% end %>
                 </li>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Books</a>
+                  <%= link_to books_path do %>
+                  <span class="glyphicon glyphicon-book" aria-hidden="true"> Books
+                  <% end %>
                 </li>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
+                  <%= link_to users_sign_out_path do %>
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true" ></span> Logout
+                  <% end %>
                 </li>
               <% else %>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                  <%= link_to root_path do %>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+                  <% end %>
                 </li>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> About</a>
+                  <%= link_to home_about_path do %>
+                  <span class="glyphicon glyphicon-link" aria-hidden="true"></span> About
+                  <% end %>
                 </li>
-                <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> sign up</a></li>
                 <li>
-                  <a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> login</a>
+                  <%= link_to new_user_registration_path do %>
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> sign up
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                  <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> login
+                  <% end %>
                 </li>
               <% end %>
             </ul>
