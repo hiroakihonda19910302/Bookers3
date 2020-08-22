@@ -1,0 +1,76 @@
+<section class="sct-color-1 slice">
+
+  <% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav hidden-xs">
+        <div class="form-sidenav text-left">
+          <h2 class="form-saidenav-title">User Info</h2>
+        </div>
+        <p>ここにプロフィール画像</p>
+        <hr>
+        <label class="control-label">name</label>
+        <p class="form-control-static"> <%= @user.name %></p>
+        <hr>
+        <label class="control-label">introduction</label>
+        <p class="form-control-static"> <%= @user.introduction %></p>
+        <%= link_to "#", edit_user_path, class: "btn btn-default btn-block", 'aria-hidden' => true %><span class="glyphicon glyphicon-wrench"></span>
+
+        <div class="form-sidenav text-left">
+          <h2 class="form-sidenav-title">New book</h2>
+        </div>
+
+        <%= form_for(@book) do |f| %>
+        <div class="form-group">
+          <label class="control-label">Title</label>
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Opinion</label>
+          <%= f.text_area :body, class:"form-control", rows:"3" %>
+        </div>
+        <%= f.submit "Create Book", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+        <% end %>
+      </div>
+
+      <!-- ここから変わる -->
+      <div class="col-sm-9">
+        <div class="form-body text-left">
+          <h2 class="form-body-title">Books</h2>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="1"></th>
+              <th>Title</th>
+              <th>Opinion</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @books.each do |book| %>
+            <tr>
+              <td>ここにプロフィール画像</td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- ここまで -->
+    </div>
+  </div>
+</section>
+
+
