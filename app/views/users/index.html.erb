@@ -11,6 +11,12 @@
   </div>
   <% end %>
 
+  <!-- ここから -->
+  <% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+  <% end %>
+  <!-- ここまで -->
+
   <div class="container">
     <div class="row">
       <div class="col-xs-3">
