@@ -23,7 +23,7 @@
         <div class="form-group text-left">
           <h2>User info</h2>
         </div>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
         <table class="table">
           <tbody>
             <tr colspan="1"></tr>
@@ -37,7 +37,7 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to edit_user_path(@user) do %>
+        <%= link_to edit_user_path(current_user) do %>
         <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
         <% end %>
 
@@ -75,8 +75,14 @@
           <tbody>
             <% @books.each do |book| %>
               <tr>
-                <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %></td>
-                <td><%= book.title %></td>
+                <td>
+                    <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+                </td>
+                <td>
+                  <%= link_to book_path(book.id) do %>
+                    <%= book.title %>
+                  <% end %>
+                </td>
                 <td><%= book.body %></td>
               </tr>
             <% end %>
