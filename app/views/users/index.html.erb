@@ -23,7 +23,7 @@
         <div class="form-group text-left">
           <h2>User info</h2>
         </div>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+        <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
         <table class="table">
           <tbody>
             <tr colspan="1"></tr>

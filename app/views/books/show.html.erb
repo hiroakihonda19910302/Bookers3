@@ -23,7 +23,7 @@
         <div class="form-group text-left">
           <h2>User info</h2>
         </div>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
         <table class="table">
           <tbody>
             <tr colspan="1"></tr>
@@ -37,7 +37,7 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to edit_user_path(current_user) do %>
+        <%= link_to edit_user_path(@user) do %>
         <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
         <% end %>
 
@@ -67,7 +67,7 @@
           <tbody>
             <tr>
               <td>
-                  <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+                  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
                   <%= link_to @user.name ,user_path(@user.id) %>
               </td>
               <td>
@@ -76,7 +76,7 @@
               <td><%= @book.body %></td>
               <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path, class: "btn btn-success", 'aria-hidden' => true %></td>
-              <td><%= link_to "Destroy", books_path, class: "btn btn-danger", 'aria-hidden' => true, method: :delete, "data-confirm" => "本当に消しますか?" %></td>
+              <td><%= link_to "Destroy", book_path(@book), class: "btn btn-danger", 'aria-hidden' => true, method: :delete, "data-confirm" => "本当に消しますか?" %></td>
               <% end %>
             </tr>
           </tbody>

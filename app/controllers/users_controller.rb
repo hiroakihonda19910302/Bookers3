@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top, :about]
+  before_action :correct_user, only: [:edit, :update]
 
 	def top
   end
@@ -35,6 +36,13 @@ class UsersController < ApplicationController
 private
 def user_params
   params.require(:user).permit(:name, :introduction, :profile_image)
+end
+
+def correct_user
+  if params[:id].to_i != current_user.id
+    redirect_to user_path(current_user)
+  end
+    # redirect_to(user_url) unless @user == current_user
 end
 
 end

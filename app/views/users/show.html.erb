@@ -23,7 +23,7 @@
         <div class="form-group text-left">
           <h2>User info</h2>
         </div>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-thumbnail pull-left profile-img", fallback: "no_image.jpg" %>
         <table class="table">
           <tbody>
             <tr colspan="1"></tr>
@@ -37,7 +37,7 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to edit_user_path(current_user) do %>
+        <%= link_to edit_user_path(@user) do %>
         <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
         <% end %>
 
